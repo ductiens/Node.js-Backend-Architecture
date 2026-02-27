@@ -1,8 +1,11 @@
 import compression from "compression";
+import dotenv from "dotenv";
 import express from "express";
 import helmet from "helmet";
 import morgan from "morgan";
-import { checkOverload } from "./src/utils/overload.js";
+import { checkOverload } from "./helpers/check.connect.js";
+
+dotenv.config();
 
 const app = express();
 
@@ -12,7 +15,7 @@ app.use(helmet());
 app.use(compression());
 
 // init db
-import "./src/config/database.js";
+import "./dbs/init.mongodb.js";
 checkOverload();
 
 // init routes

@@ -1,7 +1,9 @@
 import mongoose from "mongoose";
+import { config } from "../configs/config.mongodb.js";
 import { countConnect } from "../helpers/check.connect.js";
 
-const connectString = process.env.MONGODB_URI || "mongodb://localhost:27017/shopDEV";
+const { host, port, name } = config.db;
+const connectString = process.env.MONGODB_URI || `mongodb://${host}:${port}/${name}`;
 
 class Database {
   constructor() {
