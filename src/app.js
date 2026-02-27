@@ -1,7 +1,8 @@
+import compression from "compression";
 import express from "express";
 import helmet from "helmet";
 import morgan from "morgan";
-import compression from "compression";
+import { checkOverload } from "./src/utils/overload.js";
 
 const app = express();
 
@@ -11,6 +12,8 @@ app.use(helmet());
 app.use(compression());
 
 // init db
+import "./src/config/database.js";
+checkOverload();
 
 // init routes
 
