@@ -14,10 +14,10 @@ export const countConnect = () => {
 export const checkOverload = () => {
   setInterval(() => {
     const numConnection = mongoose.connections.length;
-    const numCores = os.cpus().length;
-    const memoryUsage = process.memoryUsage().rss;
+    const numCores = os.cpus().length;  // số nhân CPU
+    const memoryUsage = process.memoryUsage().rss;  // số nhân CPU
     // Example maximum number of connections based on number ost cores
-    const maxConnections = numCores * 5;
+    const maxConnections = numCores * 5;  // mỗi nhân CPU cho phép 5 kết nối
 
     console.log(`Active connections:${numConnection}`);
     console.log(`Memory usage:: ${memoryUsage / 1024 / 1024} MB`);
