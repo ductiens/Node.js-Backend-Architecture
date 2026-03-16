@@ -1,12 +1,12 @@
 import { signup } from "../services/access.service.js";
 
 export const signUp = async (req, res, next) => {
-  try {
+  // try {
     const result = await signup(req.body);
     return res.status(201).json(result);
-  } catch (error) {
-    next(error);
-  }
+  // } catch (error) {
+  //   next(error);
+  // }
 };
 
 export const login = async (req, res, next) => {

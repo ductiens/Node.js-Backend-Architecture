@@ -25,5 +25,22 @@ import indexRouter from "./routes/index.js";
 app.use("/", indexRouter);
 
 // handling errors
+// xử lý route không tồn tại
+app.use((req, res, next) => {
+  const error = new Error("Not Found");
+  error.status = 404;
+  next(error);
+});
+
+// middleware xử lý lỗi
+app.use((error, req, res, next) => {
+  const statusCode = error.status || 500;
+
+  return res.status(statusCode).json({
+    status: "error",
+    code: statusCode,
+    message: error.message || "Internal Server Error",
+  });
+});
 
 export default app;
